@@ -154,6 +154,10 @@ post-patch:
 	@${RM} ${WRKDIR}/man7/${FILE}
 .endfor
 	@${REINPLACE_CMD} -e 's|share/man/man3|man/man3|' ${WRKSRC}/perl/Makefile.PL
+	@${REINPLACE_CMD} -e 's|/usr/share/git|${PREFIX}/share/git|; \
+		s|/usr/bin/git|${PREFIX}/bin/git|' \
+		${WRKDIR}/man*/* ; \
+		rm ${WRKDIR}/man*/*.bak ; \
 
 post-patch-CONTRIB-on:
 	@${REINPLACE_CMD} -e "s,/usr/bin/perl,${PERL}," \
