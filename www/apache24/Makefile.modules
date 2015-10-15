@@ -126,4 +126,10 @@ CONFIGURE_ARGS+=	--with-libxml2=${LOCALBASE}/include/libxml2
 CONFIGURE_ARGS+=	--without-libxml2
 .endif
 
+.if ${PORT_OPTIONS:MHTTP2}
+CONFIGURE_ARGS+=	--with-nghttp2=${LOCALBASE}
+.else
+CONFIGURE_ARGS+=	--without-nghttp2
+.endif
+
 .endif	# _PREMKINCLUDED
