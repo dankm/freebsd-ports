@@ -81,3 +81,5 @@ do-install:
 		${STAGEDIR}${PREFIX}/share/uefi-firmware/BHYVE_UEFI${PLIST_SUFFIX}.fd
 
 .include <bsd.port.mk>
+
+RUN_DEPENDS:=	${RUN_DEPENDS:Ngcc*}
