@@ -41,6 +41,7 @@ LIBEVENT_STATIC_BUILD_DEPENDS=	${LOCALBASE}/lib/libevent.a:devel/libevent
 LIBEVENT_STATIC_VARS=	LESTATIC=${LOCALBASE}/lib/libevent.a
 
 post-patch:
+	@${REINPLACE_CMD} -e 's|@SYSCONFDIR@|${PREFIX}/etc|g' ${WRKSRC}/tmux.1
 	@${REINPLACE_CMD} -e 's|/etc/tmux.conf|${PREFIX}/etc/tmux.conf|g' ${WRKSRC}/CHANGES \
 		${WRKSRC}/tmux.h
 
