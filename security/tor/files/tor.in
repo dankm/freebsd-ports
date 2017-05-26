@@ -45,6 +45,16 @@ load_rc_config ${name}
 : ${tor_disable_default_instance="NO"}
 : ${tor_setuid="NO"}
 
+start_precmd=tor_prestart
+
+tor_prestart()
+{
+	if [ ! -d $(dirname ${tor_pidfile}) ]; then
+		mkdir -p $(dirname ${tor_pidfile})
+		chown ${tor_user}:${tor_group} $(dirname ${tor_pidfile})
+	fi
+}
+
 instance=${slave_instance}
 if [ -n "${instance}" ]; then
   inst_def=${instance}
